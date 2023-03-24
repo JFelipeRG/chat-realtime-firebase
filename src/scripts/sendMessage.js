@@ -1,15 +1,15 @@
-const user = document.querySelector("#username");
-const message = document.querySelector("#message").value;
-const send = document.querySelector("#sendMessage");
+import { setValue } from "../services/firebase.js";
 
-export const sendMessge = () => {
-  send.addEventListener("click", sendMessge);
+const user = document.querySelector(".author");
+const message = document.querySelector(".text");
+const send = document.querySelector("form");
 
-  ref.set(user, message)
-    .then(() => {
-      console.log("Los datos se han enviado correctamente");
-    })
-    .catch((error) => {
-      console.error("Se ha producido un error al enviar los datos:", error);
-    });
-};
+send.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = {
+    nickname: user.value,
+    messageUSer: message.value
+  };
+
+  setValue(data);
+});
