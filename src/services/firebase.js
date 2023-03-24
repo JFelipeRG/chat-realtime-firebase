@@ -4,17 +4,17 @@ import { getDatabase, ref, onValue, push } from "firebase/database";
 import { updateChat } from "../scripts/updateChat";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAUQfzk0V2-szDAkZasVtHj-hqKR8ZLoec",
-  authDomain: "prueba-chat-cb024.firebaseapp.com",
-  projectId: "prueba-chat-cb024",
-  databaseURL: "https://prueba-chat-cb024-default-rtdb.europe-west1.firebasedatabase.app/",
-  storageBucket: "prueba-chat-cb024.appspot.com",
-  messagingSenderId: "22634938757",
-  appId: "1:22634938757:web:931eb8400383253da884ec"
+  apiKey: import.meta.env.VITE_API_KEY || "VITE_API_KEY_VACIO",
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN || "VITE_AUTH_DOMAIN_VACIO",
+  projectId: import.meta.env.VITE_PROJECT_ID || "VITE_PROJECT_ID_VACIO",
+  databaseURL: import.meta.env.VITE_FB_URL || "VITE_FB_URL_VACIO",
+  appId: import.meta.env.VITE_APP_ID || "VITE_APP_ID_VACIO"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+
+console.log(db);
 
 export const setValue = (data) => {
   push(ref(db, "chat/"), data);
