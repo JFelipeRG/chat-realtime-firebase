@@ -14,8 +14,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-console.log(db);
-
 export const setValue = (data) => {
   push(ref(db, "chat/"), data);
 };
